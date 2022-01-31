@@ -31,3 +31,11 @@ variable "vm_size" {
   type    = string
   default = "Standard_D2as_v5"
 }
+
+variable "log_analytics_workspace_name" {
+  default = "actionRunnerAnalyticsWorkspace"
+}
+
+variable log_analytics_workspace_sku {
+    default = "PerGB2018"
+}
