@@ -1,5 +1,5 @@
-module "cluster" {
-  source               = "./modules/cluster/"
+module "k8s_cluster" {
+  source               = "./modules/k8s-cluster/"
   cluster_name         = var.cluster_name
   resource_group       = var.resource_group
   serviceprinciple_id  = var.serviceprinciple_id
@@ -11,10 +11,10 @@ module "cluster" {
   tenant_id            = var.tenant_id
 }
 
-module "k8s" {
-  source                 = "./modules/k8s/"
-  host                   = module.cluster.host
-  client_certificate     = base64decode(module.cluster.client_certificate)
-  client_key             = base64decode(module.cluster.client_key)
-  cluster_ca_certificate = base64decode(module.cluster.cluster_ca_certificate)
+module "k8s_deployment" {
+  source                 = "./modules/k8s-deployment/"
+  host                   = module.k8s_cluster.host
+  client_certificate     = base64decode(module.k8s_cluster.client_certificate)
+  client_key             = base64decode(module.k8s_cluster.client_key)
+  cluster_ca_certificate = base64decode(module.k8s_cluster.cluster_ca_certificate)
 }
