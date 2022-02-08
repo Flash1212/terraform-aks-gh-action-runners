@@ -1,25 +1,19 @@
 resource "kubernetes_deployment" "example" {
   metadata {
-    name = "terraform-example"
-    labels = {
-      test = "MyExampleApp"
-    }
+    name   = var.metadata_name
+    labels = var.metadata_labels
   }
 
   spec {
     replicas = 3
 
     selector {
-      match_labels = {
-        test = "MyExampleApp"
-      }
+      match_labels = var.label_match
     }
 
     template {
       metadata {
-        labels = {
-          test = "MyExampleApp"
-        }
+        labels = var.label_match
       }
 
       spec {

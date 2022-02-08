@@ -18,7 +18,7 @@ variable "location" {
   default = "westus2"
 }
 
-variable "kubernetes_version" {
+variable "runner_kubernetes_version" {
   default = "1.22.4"
 }
 
@@ -26,6 +26,6 @@ variable "resource_group" {
 
 }
 
-variable "cluster_name" {
+variable "runner_cluster_name" {
 
 }
